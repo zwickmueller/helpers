@@ -50,3 +50,20 @@ export const getDomCenter = (element) => {
     y: centerY
   }
 }
+
+export const isMobile = (breakpoint = 769) => {
+  if (navigator.userAgent.match(/Mobi/)) {
+    return true;
+  }
+  if ('screen' in window && window.screen.width < breakpoint) {
+    return true;
+  }
+  var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  if (connection && connection.type === 'cellular') {
+    return true;
+  }
+  if (window.innerWidth <= breakpoint) {
+    return true
+  }
+  return false;
+}
